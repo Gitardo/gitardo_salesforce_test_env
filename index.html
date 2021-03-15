@@ -1,17 +1,47 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <script async src="https://api.beta.glia.com/salemove_integration.js"></script>
-  </head>
-<body style="background-color:LightGrey;">
-
-<h1>Gerardo's Heading</h1>
-<p>My first paragraph.</p>
-    
-    <br>
   
- <br>
+  <head>
+    
+    <script async src="https://api.beta.glia.com/salemove_integration.js"></script>
+    
+  </head>
+  
+  <body style="background-color:LightGrey;">
 
-</body>
+    <h1>Gerardo's Site</h1>
+    
+    <p>CoBrowsing allowed</p>
+    <form>
+      <label for="fname">Text field CoBrowsing allowed:</label>
+      <input type="text" id="fname" name="fname"><br><br>
+      <input type="checkbox" id="cheese" name="cheese" value="Double Cheese">
+      <label for="cheese"> Double cheese</label><br>
+      <input type="checkbox" id="bacon" name="bacon" value="Extra Bacon">
+      <label for="bacon"> Extra Bacon</label><br>
+      <input type="radio" id="Yes" name="answer" value="yes">
+      <label for="yes">Yes</label><br>
+      <input type="radio" id="No" name="answer" value="no">
+      <label for="no">No</label><br>
+      <input type="submit" value="Submit CoBrowsing allowed">
+    </form>
+
+    <p>CoBrowsing restricted</p>
+    <form>
+      <label for="lname">Text field CoBrowsing masked:</label>
+      <input type="text" id="lname" name="lname" class="form-control input-md sm_cobrowsing_masked_field"><br><br>
+      <input type="checkbox" id="cheese" name="cheese" value="Double Cheese" class="form-control input-md sm_cobrowsing_disabled_field">
+      <label for="cheese"> Double cheese</label><br>
+      <input type="checkbox" id="bacon" name="bacon" value="Extra Bacon" class="form-control input-md sm_cobrowsing_disabled_field">
+      <label for="bacon"> Extra Bacon</label><br>
+      <input type="radio" id="Yes" name="answer" value="yes" class="form-control input-md sm_cobrowsing_disabled_field">
+      <label for="yes">Yes</label><br>
+      <input type="radio" id="No" name="answer" value="no" class="form-control input-md sm_cobrowsing_disabled_field">
+      <label for="no">No</label><br>
+      <input type="submit" value="Submit CoBrowsing disabled" class="form-control input-md sm_cobrowsing_disabled_field">
+    </form>
+
+  </body>
+  
 </html>
