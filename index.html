@@ -1,51 +1,49 @@
-
 <!DOCTYPE html>
 <html>
-  
   <head>
-    
+    <title>Salesforce dev</title>
     <script async src="https://api.glia.com/salemove_integration.js"></script>
-    
   </head>
-  
-  <body style="background-color:LightGrey;">
+  <body>
 
-    <h1>Gerardo's ProdUS Site</h1>
-    
-    <p>Go to <a href="https://gitardo.github.io/gitardo.github.io-prodUS/page1">Page 1</a></p>
-    <p>Go to <a href="https://gitardo.github.io/gitardo.github.io-prodUS/page2">Page 2</a></p>
-    <p><a href="https://gitardo.github.io/gitardo.github.io-prodUS/about">About</a></p>
-    
-    <p>CoBrowsing allowed</p>
-    <form>
-      <label for="fname">Text field CoBrowsing allowed:</label>
-      <input type="text" id="fname" name="fname"><br><br>
-      <input type="checkbox" id="cheese" name="cheese" value="Double Cheese">
-      <label for="cheese"> Double cheese</label><br>
-      <input type="checkbox" id="bacon" name="bacon" value="Extra Bacon">
-      <label for="bacon"> Extra Bacon</label><br>
-      <input type="radio" id="Yes" name="answer" value="yes">
-      <label for="yes">Yes</label><br>
-      <input type="radio" id="No" name="answer" value="no">
-      <label for="no">No</label><br>
-      <input type="submit" value="Submit CoBrowsing allowed">
-    </form>
+    <h1>This is a Glia Salesforce dev testing page</h1>
+    <p>Visitor side.</p>
 
-    <p>CoBrowsing restricted</p>
     <form>
-      <label for="lname">Text field CoBrowsing masked:</label>
-      <input type="text" id="lname" name="lname" class="form-control input-md sm_cobrowsing_masked_field"><br><br>
-      <input type="checkbox" id="cheese" name="cheese" value="Double Cheese" class="form-control input-md sm_cobrowsing_disabled_field">
-      <label for="cheese"> Double cheese</label><br>
-      <input type="checkbox" id="bacon" name="bacon" value="Extra Bacon" class="form-control input-md sm_cobrowsing_disabled_field">
-      <label for="bacon"> Extra Bacon</label><br>
-      <input type="radio" id="Yes" name="answer" value="yes" class="form-control input-md sm_cobrowsing_disabled_field">
-      <label for="yes">Yes</label><br>
-      <input type="radio" id="No" name="answer" value="no" class="form-control input-md sm_cobrowsing_disabled_field">
-      <label for="no">No</label><br>
-      <input type="submit" value="Submit CoBrowsing disabled" class="form-control input-md sm_cobrowsing_disabled_field">
+      <label for="visitorName">Name:</label><br>
+      <input type="text" id="visitorName" name="visitorName"><br>
+      <label for="externalId">externalId:</label><br>
+      <input type="text" id="externalId" name="externalId"><br>
+      <label for="customAttrKey">Custom Attribute Key:</label><br>
+      <input type="text" id="customAttrKey" name="customAttrKey"><br>
+      <label for="customAttrValue">Custom Attribute Value:</label><br>
+      <input type="text" id="customAttrValue" name="customAttrValue">
     </form>
+    <button onclick="updateVisitor();">Update</button>
+
+    <script type="text/javascript">
+      function updateVisitor(){
+        sm.getApi({version: 'v1'}).then(function(glia) {
+
+          var customAttr = {};
+          customAttr[document.getElementById("customAttrKey").value] = document.getElementById("customAttrValue").value;
+
+          glia.updateInformation({
+            name: document.getElementById("visitorName").value,
+            externalId: document.getElementById("externalId").value,
+            customAttributes: customAttr
+          }).then(function() {
+
+          }).catch(function(error) {
+            if (error.cause == glia.ERRORS.NETWORK_TIMEOUT) {
+
+            } else {
+
+            }
+          });
+        });
+      }
+    </script>
 
   </body>
-  
 </html>
